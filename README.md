@@ -1,7 +1,7 @@
 # prisma2db
 Creazione di una app fullstack che genera 2 prisma schema i cui model sono generati da 2 db distinti.
 
-Matzeenee puzza
+Matzeenee fct
 
 1) Crea schema prisma
 npx prisma init --datasource-provider postgresql
