@@ -1,0 +1,1 @@
+# prisma2db
