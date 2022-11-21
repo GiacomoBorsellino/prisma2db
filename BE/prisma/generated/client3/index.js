@@ -78,8 +78,8 @@ const regularDirname = hasDirname && fs.existsSync(path.join(__dirname, 'schema.
 
 // if the client has been bundled, we need to look for the folders
 const foundDirname = !regularDirname && findSync(process.cwd(), [
-    "prisma\\generated\\client",
-    "generated\\client",
+    "prisma\\generated\\client3",
+    "generated\\client3",
 ], ['d'], ['d'], 1)[0]
 
 const dirname = regularDirname || foundDirname || __dirname
@@ -91,9 +91,15 @@ const dirname = regularDirname || foundDirname || __dirname
 // https://github.com/microsoft/TypeScript/issues/3192#issuecomment-261720275
 function makeEnum(x) { return x; }
 
-exports.Prisma.ItemsScalarFieldEnum = makeEnum({
+exports.Prisma.ItemsSchemaScalarFieldEnum = makeEnum({
   name: 'name',
   value: 'value',
+  id: 'id'
+});
+
+exports.Prisma.ItemsTestingScalarFieldEnum = makeEnum({
+  name: 'name',
+  country: 'country',
   id: 'id'
 });
 
@@ -116,10 +122,11 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 
 exports.Prisma.ModelName = makeEnum({
-  items: 'items'
+  itemsSchema: 'itemsSchema',
+  itemsTesting: 'itemsTesting'
 });
 
-const dmmfString = "{\"datamodel\":{\"enums\":[],\"models\":[{\"name\":\"items\",\"dbName\":null,\"fields\":[{\"name\":\"name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"value\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}],\"types\":[]},\"mappings\":{\"modelOperations\":[{\"model\":\"items\",\"plural\":\"items\",\"findUnique\":\"findUniqueitems\",\"findFirst\":\"findFirstitems\",\"findMany\":\"findManyitems\",\"create\":\"createOneitems\",\"createMany\":\"createManyitems\",\"delete\":\"deleteOneitems\",\"update\":\"updateOneitems\",\"deleteMany\":\"deleteManyitems\",\"updateMany\":\"updateManyitems\",\"upsert\":\"upsertOneitems\",\"aggregate\":\"aggregateitems\",\"groupBy\":\"groupByitems\"}],\"otherOperations\":{\"read\":[],\"write\":[\"executeRaw\",\"queryRaw\"]}}}"
+const dmmfString = "{\"datamodel\":{\"enums\":[],\"models\":[{\"name\":\"itemsSchema\",\"dbName\":null,\"fields\":[{\"name\":\"name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"value\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},{\"name\":\"itemsTesting\",\"dbName\":null,\"fields\":[{\"name\":\"name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"country\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}],\"types\":[]},\"mappings\":{\"modelOperations\":[{\"model\":\"itemsSchema\",\"plural\":\"itemsSchemas\",\"findUnique\":\"findUniqueitemsSchema\",\"findFirst\":\"findFirstitemsSchema\",\"findMany\":\"findManyitemsSchema\",\"create\":\"createOneitemsSchema\",\"createMany\":\"createManyitemsSchema\",\"delete\":\"deleteOneitemsSchema\",\"update\":\"updateOneitemsSchema\",\"deleteMany\":\"deleteManyitemsSchema\",\"updateMany\":\"updateManyitemsSchema\",\"upsert\":\"upsertOneitemsSchema\",\"aggregate\":\"aggregateitemsSchema\",\"groupBy\":\"groupByitemsSchema\"},{\"model\":\"itemsTesting\",\"plural\":\"itemsTestings\",\"findUnique\":\"findUniqueitemsTesting\",\"findFirst\":\"findFirstitemsTesting\",\"findMany\":\"findManyitemsTesting\",\"create\":\"createOneitemsTesting\",\"createMany\":\"createManyitemsTesting\",\"delete\":\"deleteOneitemsTesting\",\"update\":\"updateOneitemsTesting\",\"deleteMany\":\"deleteManyitemsTesting\",\"updateMany\":\"updateManyitemsTesting\",\"upsert\":\"upsertOneitemsTesting\",\"aggregate\":\"aggregateitemsTesting\",\"groupBy\":\"groupByitemsTesting\"}],\"otherOperations\":{\"read\":[],\"write\":[\"executeRaw\",\"queryRaw\"]}}}"
 const dmmf = JSON.parse(dmmfString)
 exports.Prisma.dmmf = JSON.parse(dmmfString)
 
@@ -134,7 +141,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\giacomo.borsellino\\Desktop\\test-dashboard\\BE\\prisma\\generated\\client",
+      "value": "C:\\Users\\giacomo.borsellino\\Desktop\\test-dashboard\\BE\\prisma\\generated\\client3",
       "fromEnvVar": null
     },
     "config": {
@@ -175,6 +182,6 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 path.join(__dirname, "query_engine-windows.dll.node");
-path.join(process.cwd(), "prisma\\generated\\client\\query_engine-windows.dll.node")
+path.join(process.cwd(), "prisma\\generated\\client3\\query_engine-windows.dll.node")
 path.join(__dirname, "schema.prisma");
-path.join(process.cwd(), "prisma\\generated\\client\\schema.prisma")
+path.join(process.cwd(), "prisma\\generated\\client3\\schema.prisma")
